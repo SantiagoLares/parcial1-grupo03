@@ -2,14 +2,14 @@
 import { Router } from "express";
 import { PedidoService } from "../services/pedido.service.js";
 import { PedidoRepository } from "../repositories/pedido.repository.js";
-
-// Provisorio: después se conecta al catálogo real.
-import { catalogoMock } from "./catalogo.mock.ts";
+import { CatalogoService } from "../catalogo/index.js";
 
 const router = Router();
+const catalogo = new CatalogoService();
+
 
 const repositorio = new PedidoRepository();
-const servicio = new PedidoService(catalogoMock, repositorio);
+const servicio = new PedidoService(catalogo, repositorio);
 
 // POST /pedidos
 router.post("/", (req, res) => {
