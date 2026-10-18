@@ -19,7 +19,13 @@
   },
   "homepage": "https://github.com/SantiagoLares/parcial1-grupo03#readme",
   "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/supertest": "^7.2.1",
+    "supertest": "^7.3.1",
     "typescript": "^7.0.2",
     "vitest": "^5.0.5"
+  },
+  "dependencies": {
+    "express": "^5.3.0"
   }
 }
