@@ -1,0 +1,1 @@
+export type Tamanio = "pocillo" | "mediano" | "grande";
