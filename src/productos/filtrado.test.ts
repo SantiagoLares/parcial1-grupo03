@@ -1,7 +1,8 @@
 import { describe, it, expect } from "vitest";
-import { Filtrado } from "./filtrado";
+import { Filtrado } from "./filtrado.js";
 import type { Tamanio } from "./tamanio.js";
-import type { BRASIL, COLOMBIA, ETIOPIA, VariedadCafe } from "./variedad-cafe.js";
+import { BRASIL, COLOMBIA, ETIOPIA } from "./variedad-cafe.js";
+import type { VariedadCafe } from "./variedad-cafe.js";
 
 describe("Filtrado", () => {
     it.each<[VariedadCafe, Tamanio, number]>([
