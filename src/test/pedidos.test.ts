@@ -1,33 +1,15 @@
-import { describe, it, expect, beforeEach, vi } from "vitest";
-import {PedidoRepository} from "./pedido.repository";
-import { PedidoService } from "./pedido.service";
-
-// Productos simulados para no depender del integrante 1 y 2.
-const productos = [
-  {
-    id: "1",
-    nombre: "Muffin de chocolate",
-    calcularPrecio: () => 2500,
-  },
-  {
-    id: "2",
-    nombre: "Expreso Brasil pocillo",
-    calcularPrecio: () => 5020,
-  },
-];
-
-const catalogo = {
-  buscarPorId: vi.fn((id: string) =>
-    productos.find((producto) => producto.id === id)
-  ),
-};
+import { describe, it, expect, beforeEach } from "vitest";
+import { PedidoRepository } from "../repositories/pedido.repository.js";
+import { PedidoService } from "../services/pedido.service.js";
+import { CatalogoService } from "../catalogo/index.js";
 
 describe("PedidoService", () => {
   let servicio: PedidoService;
   let repositorio: PedidoRepository;
+  let catalogo: CatalogoService;
 
   beforeEach(() => {
-    catalogo.buscarPorId.mockClear();
+    catalogo = new CatalogoService();
     repositorio = new PedidoRepository();
     servicio = new PedidoService(catalogo, repositorio);
   });
@@ -39,7 +21,7 @@ describe("PedidoService", () => {
         { productoId: "2", cantidad: 1 },
       ]);
 
-      expect(pedido.total).toBe(10020);
+      expect(pedido.total).toBe(15780);
     });
 
     it("multiplica el precio por la cantidad", () => {
@@ -47,7 +29,7 @@ describe("PedidoService", () => {
         { productoId: "1", cantidad: 3 },
       ]);
 
-      expect(pedido.total).toBe(7500);
+      expect(pedido.total).toBe(15060);
     });
 
     it("rechaza un pedido vacío", () => {
