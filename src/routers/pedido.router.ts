@@ -1,56 +1,55 @@
-
 import { Router } from "express";
 import { PedidoService } from "../services/pedido.service.js";
 import { PedidoRepository } from "../repositories/pedido.repository.js";
 import { CatalogoService } from "../catalogo/index.js";
 
-const router = Router();
-const catalogo = new CatalogoService();
+export function createPedidoRouter(
+  servicio = new PedidoService(
+    new CatalogoService(),
+    new PedidoRepository()
+  )
+): Router {
+  const router = Router();
 
+  router.post("/", (req, res) => {
+    try {
+      const items = req.body?.items;
 
-const repositorio = new PedidoRepository();
-const servicio = new PedidoService(catalogo, repositorio);
+      if (!Array.isArray(items)) {
+        return res.status(400).json({
+          error: "Debe enviar una lista de items",
+        });
+      }
 
-// POST /pedidos
-router.post("/", (req, res) => {
-  try {
-    const { items } = req.body;
-
-    if (!Array.isArray(items)) {
+      const pedido = servicio.crearPedido(items);
+      return res.status(201).json(pedido);
+    } catch (error) {
       return res.status(400).json({
-        error: "Debe enviar una lista de items",
+        error:
+          error instanceof Error
+            ? error.message
+            : "Error al crear el pedido",
+      });
+    }
+  });
+
+  router.get("/", (_req, res) => {
+    return res.status(200).json(servicio.listarPedidos());
+  });
+
+  router.get("/:id", (req, res) => {
+    const pedido = servicio.buscarPorId(String(req.params.id));
+
+    if (!pedido) {
+      return res.status(404).json({
+        error: "Pedido no encontrado",
       });
     }
 
-    const pedido = servicio.crearPedido(items);
+    return res.status(200).json(pedido);
+  });
 
-    return res.status(201).json(pedido);
-  } catch (error) {
-    return res.status(400).json({
-      error:
-        error instanceof Error
-          ? error.message
-          : "Error al crear el pedido",
-    });
-  }
-});
+  return router;
+}
 
-// GET /pedidos
-router.get("/", (_req, res) => {
-  return res.json(servicio.listarPedidos());
-});
-
-// GET /pedidos/:id
-router.get("/:id", (req, res) => {
-  const pedido = servicio.buscarPorId(req.params.id);
-
-  if (!pedido) {
-    return res.status(404).json({
-      error: "Pedido no encontrado",
-    });
-  }
-
-  return res.json(pedido);
-});
-
-export default router;
+export default createPedidoRouter();
