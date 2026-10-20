@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { CatalogoService } from "../catalogo/index.js";
+import { CatalogoService } from "../services/catalogo.service.js";
 import { PedidoRepository } from "../repositories/pedido.repository.js";
 import { PedidoService } from "../services/pedido.service.js";
-import { ReportesService } from "./reportes.service.js";
+import { ReportesService } from "../services/reportes.service.js";
 
 describe("ReportesService", () => {
   let pedidos: PedidoService;

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { CatalogoService } from "./catalogo.service.js";
+import { CatalogoService } from "../services/catalogo.service.js";
 
 describe("CatalogoService", () => {
   const service = new CatalogoService();

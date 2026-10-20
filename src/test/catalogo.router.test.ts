@@ -1,8 +1,8 @@
 import { describe, it, expect } from "vitest";
 import express from "express";
 import request from "supertest";
-import { createCatalogoRouter } from "./catalogo.router.js";
-import { CatalogoService } from "./catalogo.service.js";
+import { createCatalogoRouter } from "../routers/catalogo.router.js";
+import { CatalogoService } from "../services/catalogo.service.js";
 
 describe("Rutas de catálogo (/productos)", () => {
   // Instanciamos una app de Express aislada para los tests del router
