@@ -1,12 +1,12 @@
 import express from "express";
 import type { ErrorRequestHandler } from "express";
-import { CatalogoService } from "./catalogo/catalogo.service.js";
-import { createCatalogoRouter } from "./catalogo/catalogo.router.js";
+import { CatalogoService } from "./services/catalogo.service.js";
+import { createCatalogoRouter } from "./routers/catalogo.router.js";
 import { PedidoRepository } from "./repositories/pedido.repository.js";
 import { PedidoService } from "./services/pedido.service.js";
 import { createPedidoRouter } from "./routers/pedido.router.js";
-import { ReportesService } from "./reportes/reportes.service.js";
-import { createReportesRouter } from "./reportes/reportes.router.js";
+import { ReportesService } from "./services/reportes.service.js";
+import { createReportesRouter } from "./routers/reportes.router.js";
 
 export function createApp() {
   const app = express();

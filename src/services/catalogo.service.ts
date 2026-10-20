@@ -1,5 +1,5 @@
-import type { Producto } from "../productos/index.js";
-import { PRODUCTOS_INICIALES } from "./productos.data.js";
+import type { Producto } from "../models/productos/index.js";
+import { PRODUCTOS_INICIALES } from "../data/productos.data.js";
 
 export class CatalogoService {
   private productos: Map<number, Producto>;

@@ -6,7 +6,7 @@ import {
   COLOMBIA,
   ETIOPIA,
   type Producto,
-} from "../productos/index.js";
+} from "../models/productos/index.js";
 
 // Lista con las 9 combinaciones de Expreso, 9 de Filtrado y 2 de Pasteleria.
 export const PRODUCTOS_INICIALES: Producto[] = [

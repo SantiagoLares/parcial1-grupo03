@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { CatalogoService } from "./catalogo.service.js";
+import { CatalogoService } from "../services/catalogo.service.js";
 
 export function createCatalogoRouter(catalogoService = new CatalogoService()): Router {
   const router = Router();

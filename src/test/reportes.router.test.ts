@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import express from "express";
 import request from "supertest";
-import { CatalogoService } from "../catalogo/index.js";
+import { CatalogoService } from "../services/catalogo.service.js";
 import { PedidoRepository } from "../repositories/pedido.repository.js";
 import { PedidoService } from "../services/pedido.service.js";
 import { ReportesService } from "./reportes.service.js";
