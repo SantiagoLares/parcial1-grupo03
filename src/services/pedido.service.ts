@@ -1,8 +1,8 @@
 
 import type { Pedido, ItemPedido } from "../models/pedido.model.js";
 import { PedidoRepository } from "../repositories/pedido.repository.js";
-import type { Producto } from "../productos/producto.js";
-import type { CatalogoService } from "../catalogo/catalogo.service.js";
+import type { Producto } from "../models/productos/producto.js";
+import { CatalogoService } from "./catalogo.service.js";
 
 export class PedidoService {
   constructor(
@@ -30,7 +30,7 @@ export class PedidoService {
       }
 
       const producto = this.catalogo.obtenerPorId(
-         Number(item.productoId)
+        Number(item.productoId)
       );
       if (!producto) {
         throw new Error("El producto no existe");

@@ -1,4 +1,4 @@
-import type { CatalogoService } from "../catalogo/catalogo.service.js";
+import { CatalogoService } from "./catalogo.service.js";
 import type { PedidoService } from "../services/pedido.service.js";
 
 export interface ProductoVendido {

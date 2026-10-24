@@ -1,11 +1,11 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import express from "express";
 import request from "supertest";
-import { CatalogoService } from "../catalogo/index.js";
+import { CatalogoService } from "../services/catalogo.service.js";
 import { PedidoRepository } from "../repositories/pedido.repository.js";
 import { PedidoService } from "../services/pedido.service.js";
-import { ReportesService } from "./reportes.service.js";
-import { createReportesRouter } from "./reportes.router.js";
+import { ReportesService } from "../services/reportes.service.js";
+import { createReportesRouter } from "../routers/reportes.router.js";
 
 describe("Rutas de reportes (/reportes)", () => {
   let pedidos: PedidoService;

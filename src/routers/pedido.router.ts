@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { PedidoService } from "../services/pedido.service.js";
 import { PedidoRepository } from "../repositories/pedido.repository.js";
-import { CatalogoService } from "../catalogo/index.js";
+import { CatalogoService } from "../services/catalogo.service.js";
 
 export function createPedidoRouter(
   servicio = new PedidoService(
